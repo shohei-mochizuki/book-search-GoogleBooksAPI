@@ -44,13 +44,6 @@ const SavedBooks = () => {
 
         const { loading, data } = useQuery(GET_ME);
 
-        const response = await getMe(token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const user = await response.json();
         setUserData(data.user);
       } catch (err) {
         console.error(err);
