@@ -7,7 +7,16 @@ import {
   Col
 } from 'react-bootstrap';
 
-import { getMe, deleteBook } from '../utils/API';
+// Import useMutation from @apollo/client
+// import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+
+// Import queries and mutations from '../utils/queries';
+import { GET_ME } from '../utils/queries';
+import { DELETE_BOOK } from '../utils/mutations';
+
+// DELETE LATER // import { getMe, deleteBook } from '../utils/API';
+
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
