@@ -26,6 +26,13 @@ const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
+  // Setup queries and mutations
+  // const { loading, data } = useQuery(QUERY_TECH);
+  // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
+  // const { data } = await createMatchup({
+  //   variables: { ...formData }})
+  const [deleteBook, { error }] = useMutation(DELETE_BOOK);
+
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -35,6 +42,8 @@ const SavedBooks = () => {
           return false;
         }
 
+        const { loading, data } = useQuery(GET_ME);
+
         const response = await getMe(token);
 
         if (!response.ok) {
@@ -42,7 +51,7 @@ const SavedBooks = () => {
         }
 
         const user = await response.json();
-        setUserData(user);
+        setUserData(data.user);
       } catch (err) {
         console.error(err);
       }
