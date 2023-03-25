@@ -9,8 +9,6 @@ import { useMutation } from '@apollo/client';
 // Import queries and mutations from '../utils/queries';
 import { LOGIN } from '../utils/mutations';
 
-
-import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
