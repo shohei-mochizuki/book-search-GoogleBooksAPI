@@ -33,25 +33,44 @@ const SavedBooks = () => {
   //   variables: { ...formData }})
   const [deleteBook, { error }] = useMutation(DELETE_BOOK);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
+  // useEffect(() => {
+  //   const getUserData = async () => {
+  //     try {
+  //       const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-        if (!token) {
-          return false;
-        }
+  //       if (!token) {
+  //         return false;
+  //       }
 
-        const { loading, data } = useQuery(GET_ME);
+  //       const { loading, data } = useQuery(GET_ME);
 
-        setUserData(data.user);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  //       setUserData(data.user);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
 
-    getUserData();
-  }, [userDataLength]);
+  //   getUserData();
+  // }, [userDataLength]);
+
+  const { loading, data } = useQuery(GET_ME, {
+    variables: {},
+  });
+
+  const user = data?.me || {};
+  // navigate to personal profile page if username is yours
+  if (Auth.loggedIn() === false || Auth.getProfile().data.username !== user.username) {
+    return (
+      <h4>
+        You need to be logged in to see this. Use the navigation links above to
+        sign up or log in!
+      </h4>
+    );
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {

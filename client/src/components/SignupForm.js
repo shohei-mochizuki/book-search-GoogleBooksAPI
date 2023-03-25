@@ -33,6 +33,9 @@ const SignupForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    console.log("HERE!");
+    console.log({...userFormData});
+
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -41,12 +44,11 @@ const SignupForm = () => {
     }
 
     try {      
-      const { token, user } = await createUser({
-        variables: { ...userFormData }, // OR simply userFormData
+      const { data } = await createUser({
+        variables: { ...userFormData },
       });
-      
-      console.log(user);
-      Auth.login(token);
+
+      Auth.login(data.createUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
