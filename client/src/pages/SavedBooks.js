@@ -62,6 +62,13 @@ const SavedBooks = () => {
     }
 
     try {
+      const { data } = await deleteBook({
+        variables: { _id: bookId, token }})
+      
+      
+      
+      
+      
       const response = await deleteBook(bookId, token);
 
       if (!response.ok) {
