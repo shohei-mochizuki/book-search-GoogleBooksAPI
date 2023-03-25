@@ -1,17 +1,25 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Tech {
+  type User {
     _id: ID!
-    name: String!
+    username: String!
+    email: String!
+    password: String!
+    savedBooks: [Book]
   }
 
-  type Matchup {
+  type Book {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    description: String!
+    bookId: String!
+    image: String
+    link: String
+    authors: [Author]
+  }
+
+  type Author {
+    name: String
   }
 
   type Query {
