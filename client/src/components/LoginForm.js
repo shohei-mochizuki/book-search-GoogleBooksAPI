@@ -2,6 +2,12 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
+// Import useMutation from @apollo/client
+import { useMutation, useQuery } from '@apollo/client';
+
+// Import queries and mutations from '../utils/queries';
+// HERE LATER
+
 import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
 
@@ -25,14 +31,11 @@ const LoginForm = () => {
       event.stopPropagation();
     }
 
-    try {
-      const response = await loginUser(userFormData);
+    try {      
+      const { token, user } = await createMatchup({
+        variables: { ...userFormData }, // OR simply userFormData
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
       console.log(user);
       Auth.login(token);
     } catch (err) {
