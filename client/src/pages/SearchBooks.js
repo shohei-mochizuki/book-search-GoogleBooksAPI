@@ -27,6 +27,13 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
+  // Setup queries and mutations
+  // const { loading, data } = useQuery(QUERY_TECH);
+  // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
+  // const { data } = await createMatchup({
+  //   variables: { ...formData }})
+  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -72,11 +79,21 @@ const SearchBooks = () => {
     }
 
     try {
+      const { data } = await saveBook({
+        variables: { bookToSave, token }, // OR simply userFormData
+      });
+
+
+
+
       const response = await saveBook(bookToSave, token);
 
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
+
+
+
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
