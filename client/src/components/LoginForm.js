@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 // Import useMutation from @apollo/client
-import { useMutation, useQuery } from '@apollo/client';
+// import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 // Import queries and mutations from '../utils/queries';
-// HERE LATER
+import { LOGIN } from '../utils/mutations';
+
 
 import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
@@ -16,6 +18,13 @@ const LoginForm = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
+  // Setup queries and mutations
+  // const { loading, data } = useQuery(QUERY_TECH);
+  // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
+  // const { data } = await createMatchup({
+  //   variables: { ...formData }})
+  const [login, { error }] = useMutation(LOGIN);
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -32,7 +41,7 @@ const LoginForm = () => {
     }
 
     try {      
-      const { token, user } = await createMatchup({
+      const { token, user } = await login({
         variables: { ...userFormData }, // OR simply userFormData
       });
 
