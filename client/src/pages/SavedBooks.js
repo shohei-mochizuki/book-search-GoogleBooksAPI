@@ -23,56 +23,7 @@ import { removeBookId } from '../utils/localStorage';
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
 
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-
-  // Setup queries and mutations
-  // const { loading, data } = useQuery(QUERY_TECH);
-  // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
-  // const { data } = await createMatchup({
-  //   variables: { ...formData }})
   const [deleteBook, { error }] = useMutation(DELETE_BOOK);
-
-  // useEffect(() => {
-  //   const getUserData = async () => {
-  //     try {
-  //       const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-  //       if (!token) {
-  //         return false;
-  //       }
-
-  //       const { loading, data } = useQuery(GET_ME);
-
-  //       setUserData(data.user);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-
-  //   getUserData();
-  // }, [userDataLength]);
-
-  const { loading, data } = useQuery(GET_ME, {
-    variables: {},
-  });
-
-  console.log(data);
-
-  const user = data?.me || {};
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
-    );
-  }
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -86,18 +37,48 @@ const SavedBooks = () => {
       const { data } = await deleteBook({
         variables: { bookId: bookId}})
     
-      setUserData(data);
+      setUserData(data.deleteBook);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
+      window.location.reload(false);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
-  if (!userDataLength) {
-    return <h2>LOADING...</h2>;
-  }
+  const { loading, data } = useQuery(GET_ME, {
+    variables: {},
+  });
+
+  console.log(loading)
+  console.log(data)
+
+  useEffect(()=>{
+    setUserData(data?.me);
+  },[loading])
+
+  if (loading) {
+    return <div>Loading...</div>;
+  };
+
+  console.log(userData);
+  
+  if (!userData) {
+    return <div>Loading...</div>;
+  };
+
+  if (Object.keys(userData).length === 0) {
+    return <div>Loading...</div>;
+  } else {
+
+  // if (!user?.username) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see this. Use the navigation links above to
+  //       sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   return (
     <>
@@ -134,6 +115,7 @@ const SavedBooks = () => {
       </Container>
     </>
   );
+        };
 };
 
 export default SavedBooks;
