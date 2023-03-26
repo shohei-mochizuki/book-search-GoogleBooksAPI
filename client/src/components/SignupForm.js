@@ -23,7 +23,7 @@ const SignupForm = () => {
   // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
   // const { data } = await createMatchup({
   //   variables: { ...formData }})
-  const [createUser, { error }] = useMutation(CREATE_USER);
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

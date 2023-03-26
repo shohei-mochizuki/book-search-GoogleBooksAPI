@@ -53,7 +53,8 @@ export const GET_ME = gql`
         _id
         description
         bookId
-        imagelink
+        image
+        title
         authors
       }
     }

@@ -21,7 +21,7 @@ const LoginForm = () => {
   // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
   // const { data } = await createMatchup({
   //   variables: { ...formData }})
-  const [login, { error }] = useMutation(LOGIN);
+  const [login, { error, data }] = useMutation(LOGIN);
   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -50,7 +50,6 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: '',
       email: '',
       password: '',
     });

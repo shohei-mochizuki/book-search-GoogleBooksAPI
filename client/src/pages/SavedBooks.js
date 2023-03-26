@@ -57,19 +57,21 @@ const SavedBooks = () => {
     variables: {},
   });
 
+  console.log(data);
+
   const user = data?.me || {};
-  // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() === false || Auth.getProfile().data.username !== user.username) {
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
         sign up or log in!
       </h4>
     );
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
   }
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
@@ -82,7 +84,7 @@ const SavedBooks = () => {
 
     try {
       const { data } = await deleteBook({
-        variables: { _id: bookId, token }})
+        variables: { bookId: bookId}})
     
       setUserData(data);
       // upon success, remove book's id from localStorage
