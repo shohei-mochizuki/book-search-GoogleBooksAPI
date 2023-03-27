@@ -36,13 +36,57 @@ permit persons to whom the Software is furnished to do so.
 Feel free to develop this application by forking the GitHub repository or give me advice on what I can improve on this portfolio. I am always open to any suggestions and ideas!
 
 ## TESTS 
-N/A
+If you access the application on [Heroku](https://book-search-googlebooksapi.herokuapp.com/), you can test the application on Heroku. If you would like to test it on your local computer, copy the following files and folder to your computer:
+```md
+.
+├── client/
+|   ├── public/
+|   |   ├── favicon.ico
+|   |   ├── index.html
+|   |   ├── logo192.png
+|   |   ├── logo512.png
+|   |   ├── manifest.json
+|   |   └── robots.txt
+|   ├── src/
+|   |   ├── components
+|   |   |   ├── LoginForm.js
+|   |   |   ├── Navbar.js
+|   |   |   └── SignupForm.js
+|   |   ├── pages
+|   |   |   ├── SavedBooks.js
+|   |   |   └── SearchBooks.js
+|   |   ├── utils
+|   |   |   ├── API.js
+|   |   |   ├── auth.js
+|   |   |   ├── localStorage.js
+|   |   |   ├── mutations.js
+|   |   |   └── queries.js
+|   |   ├── App.js
+|   |   ├── index.css
+|   |   └── index.js
+|   └── package.json
+├── server/
+|   ├── config/
+|   |   └── connection.js
+|   ├── models/
+|   |   ├── Book.js
+|   |   ├── index.js
+|   |   └── User.js
+|   ├── schemas/
+|   |   ├── index.js
+|   |   ├── resolvers.js
+|   |   └── typeDefs.js
+|   ├── utils/
+|   |   └── auth.js
+|   ├── package.json
+|   └── server.js
+└── package.json
+``` 
 
 ## SCREENSHOTS
-![image](https://user-images.githubusercontent.com/121307266/227089780-85c6c791-8258-4565-a0e8-6d7a867dcc22.png)
-![image](https://user-images.githubusercontent.com/121307266/227089783-197d2b3b-22a6-4121-a8f8-bf360cdc75cb.png)
-![image](https://user-images.githubusercontent.com/121307266/227089787-ecf708d5-0ebc-4ec3-b08b-acee7f235c1b.png)
-![image](https://user-images.githubusercontent.com/121307266/227089790-08889d5a-a72c-495b-ad8f-c08fb83ba3b5.png)
+![image](https://user-images.githubusercontent.com/121307266/227832522-ac596fb6-9a3c-4872-8114-35661a278893.png)
+![image](https://user-images.githubusercontent.com/121307266/227832556-a3e3907c-ac63-4db3-b1be-388ad7fa2fac.png)
+![image](https://user-images.githubusercontent.com/121307266/227832587-15ac4204-4a74-46d0-b408-bcbb2e79b878.png)
 
 ## QUESTIONS 
 If you have any questions, feel free to reach out to me!<br>
