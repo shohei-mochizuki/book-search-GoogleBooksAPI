@@ -20,11 +20,9 @@ If you access the application on [Heroku](https://book-search-googlebooksapi.her
 This application requires 1.JavaScript, 2.Node.JS (version 16, not the latest), 3.Node package manager and 4.MongoDB. In a blank folder, put necessary files (refer to the [TESTS section](#tests) for the details) and open the command line. In the command line, move to this folder and then type "npm install". Make sure that a folder called "node_modules" and a file called package-lock.json are created in all the root, server and client folders. Then type "npm run develop" and the homepage will show up automatically.
 
 ## USAGE 
-You will first land on About Me page. In the navigation bar at the top of the page, you can see buttons to move to another pages:
-* About Me (my short introduction)
-* Portfolio (my projects and works with links to deployed page and to GitHub repo)
-* Contact (THIS IS STILL UNDER CONSTRUCTION)
-* Resume (my resume and skills)
+On the landing page, you can search books by typing key words in the input form at the top. When you click "Submit Search", your search result will show up.<br>
+When you click "Login/Sign Up" button at the right top corner of the page, it will take you to Login/Signup form and once you are logged in or signed up, you will see a button "Save this Book!" at the bottom of each movie section. Once you saved the movie, you can see this movie on the page "See Your Books", which you can find in the navigation bar. On this "See Your Books" page, you can also delete books from your favorite by clicking the button "Delete this Book!".<br>
+Once you finish using this website, you can logout by clicking the button "Logout" in the navigation bar.
 
 ## LICENSE 
 MIT:<br>
