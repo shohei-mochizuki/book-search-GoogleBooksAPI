@@ -1,54 +1,50 @@
-// see SignupForm.js for comments
+// Import libraries
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-
-// Import useMutation from @apollo/client
-// import { useMutation, useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 
-// Import queries and mutations from '../utils/queries';
+// Import functions from utils;
 import { LOGIN } from '../utils/mutations';
-
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
+  // Set state variables
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  // Setup queries and mutations
-  // const { loading, data } = useQuery(QUERY_TECH);
-  // const [createMatchup, { error }] = useMutation(CREATE_MATCHUP);
-  // const { data } = await createMatchup({
-  //   variables: { ...formData }})
+  // Set mutation
   const [login, { error, data }] = useMutation(LOGIN);
   
+  // Update for form input data
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
 
+  // Submit the form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
+    // check if form has everything
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
 
+    // Send login information and receive token when successful
     try {      
       const { data } = await login({
         variables: { ...userFormData },
       });
-
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
 
+    // Reset the form
     setUserFormData({
       email: '',
       password: '',
