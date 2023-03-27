@@ -1,9 +1,13 @@
+// Import libraries
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+
+// Import components
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
+// Import functions from utils;
 import Auth from '../utils/auth';
 
 const AppNavbar = () => {
