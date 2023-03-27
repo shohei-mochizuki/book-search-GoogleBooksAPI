@@ -84,8 +84,14 @@ If you access the application on [Heroku](https://book-search-googlebooksapi.her
 ``` 
 
 ## SCREENSHOTS
+
+### Login/Signup prompt
 ![image](https://user-images.githubusercontent.com/121307266/227832522-ac596fb6-9a3c-4872-8114-35661a278893.png)
+
+### Book search page
 ![image](https://user-images.githubusercontent.com/121307266/227832556-a3e3907c-ac63-4db3-b1be-388ad7fa2fac.png)
+
+### Saved books page
 ![image](https://user-images.githubusercontent.com/121307266/227832587-15ac4204-4a74-46d0-b408-bcbb2e79b878.png)
 
 ## QUESTIONS 
