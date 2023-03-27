@@ -8,9 +8,11 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
-  // Set state variables
+  // Set initial form state
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  // Set state for form validation
   const [validated] = useState(false);
+  // Set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
   // Set mutation
