@@ -1,7 +1,7 @@
 # Portfolio - React [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## DESCRIPTION 
-This is my portfolio using React. When you move to another page, the browser doesn't refresh the page but just change the components to show.
+This application allows you to search books online using Google Books API. You can save your favorite books and see the list of them.
 
 ## TABLE OF CONTENTS
 [INSTALLATION](#installation)<br>
@@ -13,7 +13,11 @@ This is my portfolio using React. When you move to another page, the browser doe
 [QUESTIONS](#questions)
 
 ## INSTALLATION 
-Please go to the GitHub deployment page: [https://shohei-mochizuki.github.io/portfolio-react](https://shohei-mochizuki.github.io/portfolio-react)
+### HEROKU
+If you access the application on [Heroku](https://book-search-googlebooksapi.herokuapp.com/), you can use the application on Heroku.
+
+### LOCAL
+This application requires 1.JavaScript, 2.Node.JS (version 16, not the latest), 3.Node package manager and 4.MongoDB. In a blank folder, put necessary files (refer to the [TESTS section](#tests) for the details) and open the command line. In the command line, move to this folder and then type "npm install". Make sure that a folder called "node_modules" and a file called package-lock.json are created in all the root, server and client folders. Then type "npm run develop" and the homepage will show up automatically.
 
 ## USAGE 
 You will first land on About Me page. In the navigation bar at the top of the page, you can see buttons to move to another pages:
