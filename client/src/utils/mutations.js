@@ -24,21 +24,6 @@ export const CREATE_USER = gql`
   }
 `;
 
-// export const ADD_THOUGHT = gql`
-//   mutation addThought($thoughtText: String!) {
-//     addThought(thoughtText: $thoughtText) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//       }
-//     }
-//   }
-// `;
-
 export const SAVE_BOOK = gql`
   mutation Mutation($description: String!, $bookId: String!, $image: String, $title: String!, $authors: [String]) {
     saveBook(description: $description, bookId: $bookId, image: $image, title: $title, authors: $authors) {
